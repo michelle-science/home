@@ -16,7 +16,6 @@
       overflow: hidden;
       position: relative;
       font-family: 'Segoe UI', sans-serif;
-      /* fallback gradient in case filter not supported */
       background: linear-gradient(120deg, #ffb6c1 0%, #90ee90 100%);
     }
     /* Lava lamp gooey blobs background */
@@ -60,6 +59,25 @@
       background: radial-gradient(circle at 50% 50%, #43e97b 70%, #21b573 100%);
       left: 75vw; top: 10vh;
       animation-delay: 9s;
+    }
+    /* Additional blobs */
+    .blob5 {
+      width: 350px; height: 350px;
+      background: radial-gradient(circle at 55% 45%, #a0f0c0 70%, #21b573 100%);
+      left: 25vw; top: 70vh;
+      animation-delay: 1.5s;
+    }
+    .blob6 {
+      width: 280px; height: 280px;
+      background: radial-gradient(circle at 45% 55%, #ff9fc1 70%, #ff4d6d 100%);
+      left: 80vw; top: 50vh;
+      animation-delay: 4.5s;
+    }
+    .blob7 {
+      width: 220px; height: 220px;
+      background: radial-gradient(circle at 50% 50%, #c6f3ff 70%, #3db9e6 100%);
+      left: 15vw; top: 15vh;
+      animation-delay: 7.5s;
     }
     @keyframes moveBlob {
       0%   { transform: translateY(0) scale(1); }
@@ -241,9 +259,12 @@
     <div class="blob blob2"></div>
     <div class="blob blob3"></div>
     <div class="blob blob4"></div>
+    <div class="blob blob5"></div>
+    <div class="blob blob6"></div>
+    <div class="blob blob7"></div>
   </div>
   <!-- SVG Goo Filter -->
-  <svg width="0" height="0">
+  <svg width="0" height="0" aria-hidden="true" focusable="false">
     <filter id="goo">
       <feGaussianBlur in="SourceGraphic" stdDeviation="32" result="blur" />
       <feColorMatrix in="blur" mode="matrix"
@@ -257,21 +278,21 @@
   </svg>
 
   <!-- Floating science objects (SVGs, faded) -->
-  <svg class="science-object atom" viewBox="0 0 60 60">
+  <svg class="science-object atom" viewBox="0 0 60 60" aria-hidden="true" focusable="false">
     <ellipse cx="30" cy="30" rx="26" ry="10" fill="none" stroke="#21b573" stroke-width="3"/>
     <ellipse cx="30" cy="30" rx="10" ry="26" fill="none" stroke="#43e97b" stroke-width="3"/>
     <circle cx="30" cy="30" r="6" fill="#ffe066" stroke="#43e97b" stroke-width="2"/>
   </svg>
-  <svg class="science-object flask" viewBox="0 0 50 50">
+  <svg class="science-object flask" viewBox="0 0 50 50" aria-hidden="true" focusable="false">
     <rect x="20" y="5" width="10" height="20" rx="5" fill="#43e97b" opacity="0.7"/>
     <ellipse cx="25" cy="42" rx="18" ry="8" fill="#ffe066" opacity="0.7"/>
     <rect x="17" y="25" width="16" height="17" rx="8" fill="#fff" opacity="0.8"/>
   </svg>
-  <svg class="science-object planet" viewBox="0 0 48 48">
+  <svg class="science-object planet" viewBox="0 0 48 48" aria-hidden="true" focusable="false">
     <circle cx="24" cy="24" r="16" fill="#ffb6c1" stroke="#43e97b" stroke-width="2"/>
     <ellipse cx="24" cy="28" rx="20" ry="6" fill="none" stroke="#ffe066" stroke-width="2"/>
   </svg>
-  <svg class="science-object microscope" viewBox="0 0 56 56">
+  <svg class="science-object microscope" viewBox="0 0 56 56" aria-hidden="true" focusable="false">
     <rect x="26" y="10" width="6" height="30" rx="3" fill="#21b573"/>
     <rect x="20" y="40" width="16" height="8" rx="4" fill="#43e97b"/>
     <circle cx="29" cy="12" r="6" fill="#ffe066"/>
