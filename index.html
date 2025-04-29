@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Rodriguez's Corner - Science Site</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+    }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(120deg, #ffb6c1 0%, #90ee90 100%);
+      animation: gradientMove 8s ease-in-out infinite alternate;
+      position: relative;
+      font-family: 'Segoe UI', sans-serif;
+    }
+    body::before {
+      content: '';
+      position: fixed;
+      z-index: 0;
+      left: 0; top: 0; width: 100vw; height: 100vh;
+      background: radial-gradient(circle at 30% 40%, #ffb6c1 40%, transparent 70%),
+                  radial-gradient(circle at 70% 60%, #90ee90 40%, transparent 70%),
+                  radial-gradient(circle at 50% 80%, #ffe066 30%, transparent 70%);
+      opacity: 0.85;
+      animation: lavaLamp 10s ease-in-out infinite alternate;
+      pointer-events: none;
+    }
+    @keyframes gradientMove {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 100% 50%; }
+    }
+    @keyframes lavaLamp {
+      0% {
+        background-position:
+          30% 40%,
+          70% 60%,
+          50% 80%;
+      }
+      100% {
+        background-position:
+          40% 60%,
+          60% 40%,
+          55% 60%;
+      }
+    }
+
+    /* Header in top left */
+    .header {
+      position: fixed;
+      top: 24px;
+      left: 32px;
+      z-index: 10;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      user-select: none;
+    }
+    .header-title {
+      font-size: 2.2rem;
+      color: #21b573;
+      font-weight: bold;
+      text-shadow: 0 2px 10px #fff7, 0 1px 0 #2e8b57;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+      cursor: default;
+      /* No pointer cursor since not clickable */
+    }
+    .datetime {
+      font-size: 1.1rem;
+      color: #222;
+      background: rgba(255,255,255,0.6);
+      border-radius: 6px;
+      padding: 3px 12px;
+      margin-bottom: 2px;
+      box-shadow: 0 1px 4px #21b57322;
+      font-family: 'Consolas', 'Courier New', monospace;
+      transition: background 0.3s;
+      user-select: none;
+    }
+
+    /* Leaf image in top right, clipped */
+    .leaf-img {
+      position: fixed;
+      top: -30px;
+      right: -48px;
+      width: 120px;
+      height: 120px;
+      z-index: 10;
+      cursor: pointer;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 12px #1a9d5a33);
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .leaf-img:hover {
+      transform: scale(1.08);
+    }
+
+    /* Science objects floating */
+    .science-object {
+      position: absolute;
+      opacity: 0.38;
+      pointer-events: none;
+      z-index: 2;
+    }
+    .atom { width: 60px; height: 60px; animation: float1 22s linear infinite; }
+    .flask { width: 50px; height: 50px; animation: float2 30s linear infinite; }
+    .planet { width: 48px; height: 48px; animation: float3 25s linear infinite; }
+    .microscope { width: 56px; height: 56px; animation: float4 28s linear infinite; }
+    @keyframes float1 {
+      0% { top: 15%; left: 10%; transform: translateY(0) rotate(0deg);}
+      50% { top: 22%; left: 80%; transform: translateY(-30px) rotate(8deg);}
+      100% { top: 15%; left: 10%; transform: translateY(0) rotate(0deg);}
+    }
+    @keyframes float2 {
+      0% { top: 60%; left: 85%; transform: translateY(0) rotate(0deg);}
+      50% { top: 10%; left: 60%; transform: translateY(40px) rotate(-10deg);}
+      100% { top: 60%; left: 85%; transform: translateY(0) rotate(0deg);}
+    }
+    @keyframes float3 {
+      0% { top: 75%; left: 30%; transform: translateY(0) rotate(0deg);}
+      50% { top: 40%; left: 50%; transform: translateY(-20px) rotate(12deg);}
+      100% { top: 75%; left: 30%; transform: translateY(0) rotate(0deg);}
+    }
+    @keyframes float4 {
+      0% { top: 35%; left: 70%; transform: translateY(0) rotate(0deg);}
+      50% { top: 80%; left: 15%; transform: translateY(25px) rotate(-5deg);}
+      100% { top: 35%; left: 70%; transform: translateY(0) rotate(0deg);}
+    }
+
+    /* Taskbar styles */
+    .taskbar-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(50, 60, 50, 0.12);
+      z-index: 100;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+    }
+    .taskbar-overlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .taskbar {
+      position: fixed;
+      top: 0;
+      right: -350px;
+      width: 320px;
+      height: 100vh;
+      background: rgba(245,255,245,0.98);
+      box-shadow: -4px 0 24px 0 rgba(60, 90, 70, 0.18);
+      border-radius: 18px 0 0 18px;
+      padding: 36px 30px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 22px;
+      z-index: 200;
+      transition: right 0.6s cubic-bezier(.77,0,.18,1.01);
+      opacity: 0.98;
+    }
+    .taskbar.active {
+      right: 0;
+      transition: right 0.6s cubic-bezier(.77,0,.18,1.01);
+    }
+    .taskbar-close {
+      position: absolute;
+      top: 18px;
+      right: 18px;
+      font-size: 1.7rem;
+      font-weight: bold;
+      color: #21b573;
+      background: none;
+      border: none;
+      cursor: pointer;
+      transition: color 0.2s;
+      z-index: 201;
+    }
+    .taskbar-close:hover {
+      color: #e74c3c;
+    }
+    .taskbar a {
+      background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%);
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      padding: 14px 0;
+      font-size: 1.1rem;
+      font-weight: bold;
+      margin-bottom: 6px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px #21b57333;
+      transition: background 0.3s, transform 0.2s;
+      text-decoration: none;
+      text-align: center;
+      display: block;
+    }
+    .taskbar a:hover {
+      background: linear-gradient(90deg, #21b573 0%, #43e97b 100%);
+      transform: scale(1.04);
+    }
+
+    @media (max-width: 600px) {
+      .taskbar {
+        width: 90vw;
+        min-width: 0;
+        padding: 18px 8vw 18px 8vw;
+      }
+      .header-title { font-size: 1.1rem;}
+      .leaf-img { width: 70px; height: 70px; }
+    }
+  </style>
+</head>
+<body>
+  <!-- Floating science objects (SVGs, faded) -->
+  <svg class="science-object atom" viewBox="0 0 60 60">
+    <ellipse cx="30" cy="30" rx="26" ry="10" fill="none" stroke="#21b573" stroke-width="3"/>
+    <ellipse cx="30" cy="30" rx="10" ry="26" fill="none" stroke="#43e97b" stroke-width="3"/>
+    <circle cx="30" cy="30" r="6" fill="#ffe066" stroke="#43e97b" stroke-width="2"/>
+  </svg>
+  <svg class="science-object flask" viewBox="0 0 50 50">
+    <rect x="20" y="5" width="10" height="20" rx="5" fill="#43e97b" opacity="0.7"/>
+    <ellipse cx="25" cy="42" rx="18" ry="8" fill="#ffe066" opacity="0.7"/>
+    <rect x="17" y="25" width="16" height="17" rx="8" fill="#fff" opacity="0.8"/>
+  </svg>
+  <svg class="science-object planet" viewBox="0 0 48 48">
+    <circle cx="24" cy="24" r="16" fill="#ffb6c1" stroke="#43e97b" stroke-width="2"/>
+    <ellipse cx="24" cy="28" rx="20" ry="6" fill="none" stroke="#ffe066" stroke-width="2"/>
+  </svg>
+  <svg class="science-object microscope" viewBox="0 0 56 56">
+    <rect x="26" y="10" width="6" height="30" rx="3" fill="#21b573"/>
+    <rect x="20" y="40" width="16" height="8" rx="4" fill="#43e97b"/>
+    <circle cx="29" cy="12" r="6" fill="#ffe066"/>
+  </svg>
+
+  <!-- Leaf image, clipped top right, clickable -->
+  <img
+    class="leaf-img"
+    id="leaf"
+    src="https://png.pngtree.com/png-clipart/20230428/ourmid/pngtree-free-vector-big-green-leaf-of-tropical-monstera-plant-isolated-on-png-image_6743001.png"
+    alt="Monstera Leaf"
+    title="Click to open taskbar"
+  />
+
+  <!-- Header (top left) -->
+  <div class="header">
+    <span class="header-title">Rodriguez's Corner</span>
+    <div class="datetime">
+      <span id="date"></span><br />
+      <span id="clock"></span>
+    </div>
+  </div>
+
+  <!-- Taskbar overlay and sidebar -->
+  <div class="taskbar-overlay" id="taskbarOverlay"></div>
+  <nav class="taskbar" id="taskbar">
+    <button class="taskbar-close" id="closeTaskbar" aria-label="Close taskbar">&times;</button>
+    <a href="vocab.html" target="_self" rel="noopener">Vocabulary</a>
+    <a href="https://arlington.instructure.com/courses/323125" target="_blank" rel="noopener">Canvas</a>
+    <a href="https://gz.explorelearning.com/" target="_blank" rel="noopener">Gizmoz</a>
+    <a href="sim-home.html" target="_self" rel="noopener">Simulations</a>
+    <a href="GINO.html" target="_self" rel="noopener">Guided Notes</a>
+    <a href="read.html" target="_self" rel="noopener">Readings</a>
+    <a href="units.html" target="_self" rel="noopener">Units Covered</a>
+  </nav>
+
+  <script>
+    // Elements
+    const leaf = document.getElementById('leaf');
+    const taskbar = document.getElementById('taskbar');
+    const overlay = document.getElementById('taskbarOverlay');
+    const closeBtn = document.getElementById('closeTaskbar');
+
+    // Open taskbar on leaf click
+    leaf.addEventListener('click', () => {
+      overlay.classList.add('active');
+      taskbar.classList.add('active');
+    });
+
+    // Close taskbar on X click
+    closeBtn.addEventListener('click', () => {
+      taskbar.classList.remove('active');
+      setTimeout(() => overlay.classList.remove('active'), 390);
+    });
+
+    // Close taskbar on overlay click
+    overlay.addEventListener('click', (e) => {
+      if (e.target === overlay) {
+        taskbar.classList.remove('active');
+        setTimeout(() => overlay.classList.remove('active'), 390);
+      }
+    });
+
+    // Real-time US date and CST clock
+    function updateDateTime() {
+      const now = new Date();
+      // Convert to CST (America/Chicago)
+      const options = {
+        timeZone: 'America/Chicago',
+        hour12: true,
+        month: 'long',
+        day: 'numeric',
+        year: 'numeric',
+        weekday: 'long',
+      };
+      const dateString = now.toLocaleDateString('en-US', options);
+      const timeString = now.toLocaleTimeString('en-US', {
+        timeZone: 'America/Chicago',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true,
+      });
+      document.getElementById('date').textContent = dateString;
+      document.getElementById('clock').textContent = timeString + ' CST';
+    }
+    updateDateTime();
+    setInterval(updateDateTime, 1000);
+  </script>
+</body>
+</html>
