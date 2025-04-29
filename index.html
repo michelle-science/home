@@ -13,40 +13,59 @@
     }
     body {
       min-height: 100vh;
-      background: linear-gradient(120deg, #ffb6c1 0%, #90ee90 100%);
-      animation: gradientMove 8s ease-in-out infinite alternate;
+      overflow: hidden;
       position: relative;
       font-family: 'Segoe UI', sans-serif;
+      /* fallback gradient in case filter not supported */
+      background: linear-gradient(120deg, #ffb6c1 0%, #90ee90 100%);
     }
-    body::before {
-      content: '';
+    /* Lava lamp gooey blobs background */
+    .lava-bg {
       position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
       z-index: 0;
-      left: 0; top: 0; width: 100vw; height: 100vh;
-      background: radial-gradient(circle at 30% 40%, #ffb6c1 40%, transparent 70%),
-                  radial-gradient(circle at 70% 60%, #90ee90 40%, transparent 70%),
-                  radial-gradient(circle at 50% 80%, #ffe066 30%, transparent 70%);
-      opacity: 0.85;
-      animation: lavaLamp 10s ease-in-out infinite alternate;
       pointer-events: none;
+      overflow: hidden;
+      filter: url(#goo);
     }
-    @keyframes gradientMove {
-      0% { background-position: 0% 50%; }
-      100% { background-position: 100% 50%; }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.7;
+      mix-blend-mode: lighten;
+      animation: moveBlob 12s ease-in-out infinite alternate;
     }
-    @keyframes lavaLamp {
-      0% {
-        background-position:
-          30% 40%,
-          70% 60%,
-          50% 80%;
-      }
-      100% {
-        background-position:
-          40% 60%,
-          60% 40%,
-          55% 60%;
-      }
+    .blob1 {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle at 60% 40%, #ffb6c1 70%, #ff69b4 100%);
+      left: 10vw; top: 50vh;
+      animation-delay: 0s;
+    }
+    .blob2 {
+      width: 300px; height: 300px;
+      background: radial-gradient(circle at 40% 60%, #90ee90 70%, #32cd32 100%);
+      left: 60vw; top: 60vh;
+      animation-delay: 3s;
+    }
+    .blob3 {
+      width: 250px; height: 250px;
+      background: radial-gradient(circle at 50% 50%, #ffe066 70%, #ffb347 100%);
+      left: 35vw; top: 20vh;
+      animation-delay: 6s;
+    }
+    .blob4 {
+      width: 200px; height: 200px;
+      background: radial-gradient(circle at 50% 50%, #43e97b 70%, #21b573 100%);
+      left: 75vw; top: 10vh;
+      animation-delay: 9s;
+    }
+    @keyframes moveBlob {
+      0%   { transform: translateY(0) scale(1); }
+      30%  { transform: translateY(-80px) scale(1.1, 0.9); }
+      60%  { transform: translateY(60px) scale(0.95, 1.1); }
+      100% { transform: translateY(0) scale(1); }
     }
 
     /* Header in top left */
@@ -68,7 +87,6 @@
       letter-spacing: 1px;
       margin-bottom: 8px;
       cursor: default;
-      /* No pointer cursor since not clickable */
     }
     .datetime {
       font-size: 1.1rem;
@@ -217,6 +235,27 @@
   </style>
 </head>
 <body>
+  <!-- Lava lamp gooey blobs background -->
+  <div class="lava-bg" aria-hidden="true">
+    <div class="blob blob1"></div>
+    <div class="blob blob2"></div>
+    <div class="blob blob3"></div>
+    <div class="blob blob4"></div>
+  </div>
+  <!-- SVG Goo Filter -->
+  <svg width="0" height="0">
+    <filter id="goo">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="32" result="blur" />
+      <feColorMatrix in="blur" mode="matrix"
+        values="1 0 0 0 0
+                0 1 0 0 0
+                0 0 1 0 0
+                0 0 0 18 -7"
+        result="goo" />
+      <feBlend in="SourceGraphic" in2="goo" />
+    </filter>
+  </svg>
+
   <!-- Floating science objects (SVGs, faded) -->
   <svg class="science-object atom" viewBox="0 0 60 60">
     <ellipse cx="30" cy="30" rx="26" ry="10" fill="none" stroke="#21b573" stroke-width="3"/>
