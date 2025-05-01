@@ -10,7 +10,6 @@
       margin: 0;
       font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
-      /* Fun new gradient: orange, pink, purple, blue */
       background: linear-gradient(135deg, #ff9966 0%, #ff5e62 40%, #7f53ac 80%, #5ee7df 100%);
       display: flex;
       flex-direction: column;
@@ -30,6 +29,17 @@
       margin: 48px 0 0 0;
       justify-content: center;
     }
+    .explore-link {
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      border-radius: 18px;
+      transition: box-shadow 0.2s;
+    }
+    .explore-link:focus {
+      outline: 2px solid #fff;
+      box-shadow: 0 0 0 4px #fc5c7d;
+    }
     .explore-box {
       background: rgba(255,255,255,0.13);
       border-radius: 18px;
@@ -48,7 +58,8 @@
       text-align: center;
       overflow: visible;
     }
-    .explore-box:hover {
+    .explore-link:hover .explore-box,
+    .explore-link:focus .explore-box {
       background: rgba(255,255,255,0.23);
       transform: translateY(-6px) scale(1.05);
     }
@@ -69,7 +80,8 @@
       box-shadow: 0 2px 12px rgba(0,0,0,0.22);
       pointer-events: none;
     }
-    .explore-box:hover .hover-text {
+    .explore-link:hover .hover-text,
+    .explore-link:focus .hover-text {
       display: block;
       animation: fadeIn 0.3s;
     }
@@ -98,36 +110,46 @@
 <body>
   <h1>Science Explorations</h1>
   <div class="box-container">
-    <div class="explore-box">
-      Volcano Eruption
-      <div class="hover-text">
-        Explosive forces, lava flows, and ash clouds! Discover the science behind volcanic eruptions and how Earth's crust changes.
+    <a class="explore-link" href="sim/volcano.html">
+      <div class="explore-box">
+        Volcano Eruption
+        <div class="hover-text">
+          Explosive forces, lava flows, and ash clouds! Discover the science behind volcanic eruptions and how Earth's crust changes.
+        </div>
       </div>
-    </div>
-    <div class="explore-box">
-      What Floats, What Sinks
-      <div class="hover-text">
-        Test buoyancy and density! Find out why some objects float while others sink in water.
+    </a>
+    <a class="explore-link" href="sim/float-sink.html">
+      <div class="explore-box">
+        What Floats, What Sinks
+        <div class="hover-text">
+          Test buoyancy and density! Find out why some objects float while others sink in water.
+        </div>
       </div>
-    </div>
-    <div class="explore-box">
-      Car Crash Physics
-      <div class="hover-text">
-        Explore motion, force, and energy transfer in collisions. See how physics keeps us safe on the road!
+    </a>
+    <a class="explore-link" href="sim/car.html">
+      <div class="explore-box">
+        Car Crash Physics
+        <div class="hover-text">
+          Explore motion, force, and energy transfer in collisions. See how physics keeps us safe on the road!
+        </div>
       </div>
-    </div>
-    <div class="explore-box">
-      Ecosystem
-      <div class="hover-text">
-        Dive into the interactions between living things and their environment. Learn how energy flows in nature.
+    </a>
+    <a class="explore-link" href="sim/eco.html">
+      <div class="explore-box">
+        Ecosystem
+        <div class="hover-text">
+          Dive into the interactions between living things and their environment. Learn how energy flows in nature.
+        </div>
       </div>
-    </div>
-    <div class="explore-box">
-      Weather Forecast
-      <div class="hover-text">
-        Predict the weather! Explore clouds, precipitation, and the tools meteorologists use to forecast our skies.
+    </a>
+    <a class="explore-link" href="sim/weather.html">
+      <div class="explore-box">
+        Weather Forecast
+        <div class="hover-text">
+          Predict the weather! Explore clouds, precipitation, and the tools meteorologists use to forecast our skies.
+        </div>
       </div>
-    </div>
+    </a>
   </div>
 </body>
 </html>
