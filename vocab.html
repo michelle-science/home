@@ -1,22 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Rodriguez's Corner - Vocabulary</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link rel="icon" type="image/x-icon" href="https://pnghq.com/wp-content/uploads/pnghq.com-beaker-icons-in-png-art-f-6.png">
+  <meta charset="UTF-8">
+  <title>Science Vocabulary</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
- html, body {
-    hight: 180%;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
- }
     body {
-      ove-hight: 199%;
-      overflow: hidden;
-      position: relative;
-      font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(120deg, #ffb6c1 0%, #90ee90 100%);
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #1e90ff 0%, #6a82fb 50%, #fc5c7d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    .vocab-list {
+      margin: 40px 0 0 0;
+      padding: 0;
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      justify-content: center;
+    }
+    .vocab-list li {
+      background: rgba(255,255,255,0.12);
+      border-radius: 18px;
+      padding: 12px 22px;
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      font-size: 1.2rem;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    }
+    .vocab-list li:hover, .vocab-list li.active {
+      background: rgba(255,255,255,0.25);
+      transform: translateY(-2px) scale(1.05);
+    }
+    .definition-box {
+      margin-top: 32px;
+      background: rgba(0,0,0,0.25);
+      border-radius: 16px;
+      padding: 28px 36px;
+      min-width: 320px;
+      max-width: 520px;
+      font-size: 1.15rem;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+      display: none;
+      animation: fadeIn 0.4s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(16px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 600px) {
+      .definition-box {
+        padding: 18px 12px;
+        min-width: unset;
+        max-width: 94vw;
+      }
+      .vocab-list {
+        gap: 10px;
+      }
+      h1 {
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Science Vocabulary</h1>
+  <ul class="vocab-list">
+    <li data-word="atom">Atom</li>
+    <li data-word="photosynthesis">Photosynthesis</li>
+    <li data-word="gravity">Gravity</li>
+    <li data-word="ecosystem">Ecosystem</li>
+    <li data-word="molecule">Molecule</li>
+    <li data-word="energy">Energy</li>
+    <li data-word="cell">Cell</li>
+    <li data-word="evaporation">Evaporation</li>
+    <li data-word="hypothesis">Hypothesis</li>
+    <li data-word="organism">Organism</li>
+    <li data-word="force">Force</li>
+    <li data-word="matter">Matter</li>
+  </ul>
+  <div class="definition-box" id="definitionBox"></div>
+  <script>
+    const definitions = {
+      "atom": "The smallest unit of an element that retains the properties of that element. Atoms are the building blocks of matter.",
+      "photosynthesis": "The process by which green plants and some other organisms use sunlight to synthesize food from carbon dioxide and water.",
+      "gravity": "A natural force that attracts two bodies toward each other. On Earth, gravity gives weight to physical objects.",
+      "ecosystem": "A community of living organisms and their physical environment, interacting as a system.",
+      "molecule": "A group of two or more atoms held together by chemical bonds.",
+      "energy": "The capacity to do work or cause change. Energy exists in various forms, such as kinetic, potential, thermal, and chemical.",
+      "cell": "The basic structural, functional, and biological unit of all living organisms.",
+      "evaporation": "The process by which a liquid turns into a vapor or gas, usually as a result of heat.",
+      "hypothesis": "A testable explanation or prediction for a scientific question or problem.",
+      "organism": "Any living thing, such as an animal, plant, fungus, or microorganism.",
+      "force": "A push or pull on an object resulting from the object's interaction with another object.",
+      "matter": "Anything that has mass and takes up space."
+    };
+
+    const vocabList = document.querySelectorAll('.vocab-list li');
+    const definitionBox = document.getElementById('definitionBox');
+
+    vocabList.forEach(item => {
+      item.addEventListener('click', function() {
+        vocabList.forEach(li => li.classList.remove('active'));
+        this.classList.add('active');
+        const word = this.getAttribute('data-word');
+        definitionBox.style.display = 'block';
+        definitionBox.textContent = definitions[word];
+      });
+    });
+  </script>
 </body>
 </html>
