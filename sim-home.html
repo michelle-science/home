@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Science Explorations</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      /* Fun new gradient: orange, pink, purple, blue */
+      background: linear-gradient(135deg, #ff9966 0%, #ff5e62 40%, #7f53ac 80%, #5ee7df 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    h1 {
+      margin-top: 48px;
+      font-size: 2.4rem;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+    }
+    .box-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 32px;
+      margin: 48px 0 0 0;
+      justify-content: center;
+    }
+    .explore-box {
+      background: rgba(255,255,255,0.13);
+      border-radius: 18px;
+      width: 210px;
+      height: 140px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.13);
+      position: relative;
+      cursor: pointer;
+      transition: background 0.3s, transform 0.2s;
+      text-align: center;
+      overflow: visible;
+    }
+    .explore-box:hover {
+      background: rgba(255,255,255,0.23);
+      transform: translateY(-6px) scale(1.05);
+    }
+    .hover-text {
+      display: none;
+      position: absolute;
+      bottom: 110%;
+      left: 50%;
+      transform: translateX(-50%);
+      background: rgba(0,0,0,0.85);
+      color: #fff;
+      padding: 14px 18px;
+      border-radius: 10px;
+      font-size: 1rem;
+      white-space: pre-line;
+      z-index: 10;
+      width: 220px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.22);
+      pointer-events: none;
+    }
+    .explore-box:hover .hover-text {
+      display: block;
+      animation: fadeIn 0.3s;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px);}
+      to   { opacity: 1; transform: translateY(0);}
+    }
+    @media (max-width: 700px) {
+      .box-container {
+        gap: 18px;
+      }
+      .explore-box {
+        width: 95vw;
+        max-width: 320px;
+        height: 90px;
+        font-size: 1.05rem;
+      }
+      .hover-text {
+        width: 90vw;
+        max-width: 320px;
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Science Explorations</h1>
+  <div class="box-container">
+    <div class="explore-box">
+      Volcano Eruption
+      <div class="hover-text">
+        Explosive forces, lava flows, and ash clouds! Discover the science behind volcanic eruptions and how Earth's crust changes.
+      </div>
+    </div>
+    <div class="explore-box">
+      What Floats, What Sinks
+      <div class="hover-text">
+        Test buoyancy and density! Find out why some objects float while others sink in water.
+      </div>
+    </div>
+    <div class="explore-box">
+      Car Crash Physics
+      <div class="hover-text">
+        Explore motion, force, and energy transfer in collisions. See how physics keeps us safe on the road!
+      </div>
+    </div>
+    <div class="explore-box">
+      Ecosystem
+      <div class="hover-text">
+        Dive into the interactions between living things and their environment. Learn how energy flows in nature.
+      </div>
+    </div>
+    <div class="explore-box">
+      Weather Forecast
+      <div class="hover-text">
+        Predict the weather! Explore clouds, precipitation, and the tools meteorologists use to forecast our skies.
+      </div>
+    </div>
+  </div>
+</body>
+</html>
