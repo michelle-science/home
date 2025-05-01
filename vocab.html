@@ -16,6 +16,25 @@
       align-items: center;
       justify-content: flex-start;
     }
+    #backButton {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+      z-index: 1000;
+      user-select: none;
+    }
+    #backButton:hover {
+      background: rgba(255, 255, 255, 0.45);
+    }
     h1 {
       margin-top: 40px;
       font-size: 2.5rem;
@@ -72,10 +91,17 @@
       h1 {
         font-size: 1.5rem;
       }
+      #backButton {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 8px;
+        left: 8px;
+      }
     }
   </style>
 </head>
 <body>
+  <button id="backButton" aria-label="Go Back">&larr; Back</button>
   <h1>Science Vocabulary</h1>
   <ul class="vocab-list">
     <li data-word="atom">Atom</li>
@@ -90,9 +116,23 @@
     <li data-word="organism">Organism</li>
     <li data-word="force">Force</li>
     <li data-word="matter">Matter</li>
+    <li data-word="mass">Mass</li>
+    <li data-word="push">Push</li>
+    <li data-word="pull">Pull</li>
+    <li data-word="electricity">Electricity</li>
+    <li data-word="herbivore">Herbivore</li>
+    <li data-word="carnivore">Carnivore</li>
+    <li data-word="omnivore">Omnivore</li>
+    <li data-word="element">Element</li>
   </ul>
   <div class="definition-box" id="definitionBox"></div>
   <script>
+    // Back button functionality
+    document.getElementById('backButton').addEventListener('click', () => {
+      history.back();
+    });
+
+    // Vocabulary definitions
     const definitions = {
       "atom": "The smallest unit of an element that retains the properties of that element. Atoms are the building blocks of matter.",
       "photosynthesis": "The process by which green plants and some other organisms use sunlight to synthesize food from carbon dioxide and water.",
@@ -106,6 +146,14 @@
       "organism": "Any living thing, such as an animal, plant, fungus, or microorganism.",
       "force": "A push or pull on an object resulting from the object's interaction with another object.",
       "matter": "Anything that has mass and takes up space."
+      "mass": "Mass is a measurement that refers to the amount of matter that makes up an object"
+      "push": "Push is defined as the force that is responsible for an object moving from the state of rest."
+      "pull": "The pull is defined as the force that is responsible for an object moving from the state of rest but in the opposite direction when compared to the push."
+      "electricity": "Electricity is a type of energy that consists of the movement of electrons between two points when there is a potential difference between them."
+      "herbivore": "A vegetarian does not eat any animal flesh such as meat, poultry, or fish."
+      "carnivore": "A carnivore only eats meat such as animals, fish, or poultry."
+      "omnivore": "A omnivore eats both meat and plants."
+      "element": "An element is a substance that cannot be broken down into any other substance."
     };
 
     const vocabList = document.querySelectorAll('.vocab-list li');
