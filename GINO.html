@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Guided Science Notes</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #1e90ff 0%, #6a82fb 50%, #fc5c7d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    #backButton {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+      z-index: 1000;
+      user-select: none;
+    }
+    #backButton:hover {
+      background: rgba(255, 255, 255, 0.45);
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #guided-notes {
+      margin-top: 48px;
+      width: 100%;
+      max-width: 700px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+    #guided-notes h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .notes-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .note {
+      background: rgba(0,0,0,0.13);
+      border-radius: 12px;
+      padding: 20px 18px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+    }
+    .note h3 {
+      margin-top: 0;
+      color: #fc5c7d;
+      font-size: 1.2rem;
+    }
+    .note ul {
+      margin: 12px 0 0 0;
+      padding-left: 20px;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      #backButton {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 8px;
+        left: 8px;
+      }
+      #guided-notes {
+        padding: 16px 6vw;
+      }
+      .note {
+        padding: 14px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="backButton" aria-label="Go Back">&larr; Back</button>
+  <h1>Guided Science Notes</h1>
+  <section id="guided-notes">
+    <h2>Guided Science Notes</h2>
+    <div class="notes-container">
+      <div class="note">
+        <h3>Matter</h3>
+        <ul>
+          <li><strong>Matter</strong> is anything that has mass and takes up space.</li>
+          <li>It exists in different states: solid, liquid, gas, and plasma.</li>
+          <li>All physical objects are made of matter.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Mass</h3>
+        <ul>
+          <li><strong>Mass</strong> is a measure of the amount of matter in an object.</li>
+          <li>It is usually measured in grams or kilograms.</li>
+          <li>Mass is different from weight, which depends on gravity.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Chemical Energy</h3>
+        <ul>
+          <li><strong>Chemical energy</strong> is stored in the bonds of atoms and molecules.</li>
+          <li>It is released during chemical reactions, like when food is digested or fuel is burned.</li>
+          <li>Batteries and food are examples of things that contain chemical energy.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Thermal Energy</h3>
+        <ul>
+          <li><strong>Thermal energy</strong> is the energy that comes from heat.</li>
+          <li>It is caused by the movement of particles within matter.</li>
+          <li>More movement means higher temperature and more thermal energy.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Physical Energy</h3>
+        <ul>
+          <li><strong>Physical energy</strong> usually refers to mechanical energy, which is the energy of motion and position.</li>
+          <li>Examples include a moving car (kinetic energy) or a stretched rubber band (potential energy).</li>
+          <li>Physical energy is involved whenever something moves or changes position.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Stars</h3>
+        <ul>
+          <li><strong>Stars</strong> are giant balls of hot, glowing gas, mostly hydrogen and helium.</li>
+          <li>They produce energy through nuclear fusion, turning hydrogen into helium.</li>
+          <li>The Sun is the closest star to Earth.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Galaxies</h3>
+        <ul>
+          <li><strong>Galaxies</strong> are huge collections of stars, gas, dust, and dark matter held together by gravity.</li>
+          <li>Our solar system is in the Milky Way galaxy.</li>
+          <li>There are billions of galaxies in the universe.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Atmosphere</h3>
+        <ul>
+          <li>The <strong>atmosphere</strong> is the layer of gases that surrounds a planet, like Earth.</li>
+          <li>It protects us from harmful radiation and helps regulate temperature.</li>
+          <li>Earth's atmosphere is made mostly of nitrogen and oxygen.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Orbit</h3>
+        <ul>
+          <li>An <strong>orbit</strong> is the path an object takes as it moves around another object in space, usually because of gravity.</li>
+          <li>Planets orbit the Sun, and moons orbit planets.</li>
+          <li>Orbits can be circular or elliptical (oval-shaped).</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Biomes</h3>
+        <ul>
+          <li><strong>Biomes</strong> are large areas of the world with similar climates, plants, and animals.</li>
+          <li>Examples include deserts, forests, grasslands, and tundra.</li>
+          <li>Each biome has its own unique ecosystem.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Primary Succession</h3>
+        <ul>
+          <li><strong>Primary succession</strong> is the process by which life begins to grow in a place where there was no soil before, like after a volcanic eruption.</li>
+          <li>Lichens and mosses are often the first organisms to appear.</li>
+          <li>Over time, soil forms and more complex plants can grow.</li>
+        </ul>
+      </div>
+      <div class="note">
+        <h3>Secondary Succession</h3>
+        <ul>
+          <li><strong>Secondary succession</strong> happens in areas where a disturbance (like fire or farming) has destroyed a community but left the soil intact.</li>
+          <li>Plants and animals return more quickly than in primary succession.</li>
+          <li>This process helps ecosystems recover after damage.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+  <script>
+    // Back button functionality
+    document.getElementById('backButton').addEventListener('click', () => {
+      history.back();
+    });
+  </script>
+</body>
+</html>
