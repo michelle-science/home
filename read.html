@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Science Readings</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    body {
+      min-height: 100vh;
+      margin: 0;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      color: #fff;
+      background: linear-gradient(135deg, #1e90ff 0%, #6a82fb 50%, #fc5c7d 100%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    #backButton {
+      position: fixed;
+      top: 16px;
+      left: 16px;
+      background: rgba(255, 255, 255, 0.25);
+      border: none;
+      color: white;
+      padding: 10px 16px;
+      font-size: 1rem;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+      transition: background 0.3s ease;
+      z-index: 1000;
+      user-select: none;
+    }
+    #backButton:hover {
+      background: rgba(255, 255, 255, 0.45);
+    }
+    h1 {
+      margin-top: 40px;
+      font-size: 2.5rem;
+      letter-spacing: 2px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+    #readings-section {
+      margin-top: 48px;
+      width: 100%;
+      max-width: 800px;
+      background: rgba(255,255,255,0.10);
+      border-radius: 16px;
+      padding: 32px 24px;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    }
+    #readings-section h2 {
+      font-size: 2rem;
+      margin-bottom: 18px;
+      color: #fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.12);
+    }
+    .reading {
+      background: rgba(0,0,0,0.13);
+      border-radius: 12px;
+      padding: 20px 18px;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+      margin-bottom: 24px;
+    }
+    .reading h3 {
+      margin-top: 0;
+      color: #fc5c7d;
+      font-size: 1.2rem;
+    }
+    .reading p {
+      margin: 12px 0 0 0;
+      line-height: 1.6;
+    }
+    .reading a {
+      color: #ffd700;
+      text-decoration: underline;
+      word-break: break-word;
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 1.5rem;
+      }
+      #backButton {
+        padding: 8px 12px;
+        font-size: 0.95rem;
+        top: 8px;
+        left: 8px;
+      }
+      #readings-section {
+        padding: 16px 6vw;
+      }
+      .reading {
+        padding: 14px 6px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <button id="backButton" aria-label="Go Back">&larr; Back</button>
+  <h1>Science Readings</h1>
+  <section id="readings-section">
+    <h2>Featured Readings</h2>
+
+    <div class="reading">
+      <h3>The Water Cycle</h3>
+      <p>
+        The water cycle describes how water moves above, on, and below the surface of the Earth. Water changes states between liquid, vapor, and ice at various places in the water cycle. Learn more at
+        <a href="https://www.usgs.gov/special-topics/water-science-school/science/water-cycle" target="_blank" rel="noopener">USGS Water Science School</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Introduction to Ecosystems</h3>
+      <p>
+        An ecosystem is a community of living organisms and their nonliving environment. Ecosystems can be as large as a desert or as small as a puddle. Read more at
+        <a href="https://www.nationalgeographic.org/encyclopedia/ecosystem/" target="_blank" rel="noopener">National Geographic: Ecosystem</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>What Is Energy?</h3>
+      <p>
+        Energy is the ability to do work. It exists in many forms such as heat, light, chemical, and electrical energy. Check out
+        <a href="https://www.energy.gov/science-innovation/energy-sources" target="_blank" rel="noopener">Energy.gov: Energy Sources</a>
+        for more information.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Atoms and Elements</h3>
+      <p>
+        Atoms are the basic building blocks of matter. Elements are pure substances made of one kind of atom. Learn the basics at
+        <a href="https://chem.libretexts.org/Bookshelves/General_Chemistry/Map%3A_Chemistry_(Zumdahl_and_Decoste)/01%3A_Atoms_Molecules_and_Ions/1.02%3A_Atoms_and_Elements" target="_blank" rel="noopener">LibreTexts Chemistry</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Photosynthesis Explained</h3>
+      <p>
+        Photosynthesis is the process plants use to convert sunlight into chemical energy. Discover how it works at
+        <a href="https://www.khanacademy.org/science/biology/photosynthesis-in-plants" target="_blank" rel="noopener">Khan Academy: Photosynthesis</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Gravity: The Force That Shapes the Universe</h3>
+      <p>
+        Gravity is a fundamental force that attracts objects with mass toward each other. Learn more about gravity at
+        <a href="https://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-gravity-58.html" target="_blank" rel="noopener">NASA Knows Gravity</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>The Structure of the Cell</h3>
+      <p>
+        Cells are the basic units of life. This article explains the parts of animal and plant cells and their functions. See details at
+        <a href="https://www.cellsalive.com/cells/cell_model.htm" target="_blank" rel="noopener">Cells Alive</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Understanding Ecosystems and Biomes</h3>
+      <p>
+        Explore the different types of biomes and how ecosystems function within them. Read more at
+        <a href="https://www.nationalgeographic.com/environment/habitats/" target="_blank" rel="noopener">National Geographic Habitats</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Electricity Basics</h3>
+      <p>
+        Electricity powers our world. Learn about electric current, circuits, and how electricity works at
+        <a href="https://www.energy.gov/eere/education/electricity-basics" target="_blank" rel="noopener">Energy.gov Electricity Basics</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Introduction to Forces and Motion</h3>
+      <p>
+        Forces cause changes in motion. This reading covers Newton’s laws and how forces affect objects. See more at
+        <a href="https://www.physicsclassroom.com/class/newtlaws" target="_blank" rel="noopener">The Physics Classroom</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Stars and Their Life Cycle</h3>
+      <p>
+        Stars go through stages from birth to death. Learn about star formation, main sequence, and supernovae at
+        <a href="https://imagine.gsfc.nasa.gov/science/objects/stars1.html" target="_blank" rel="noopener">NASA Imagine the Universe</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Galaxies: Islands in the Universe</h3>
+      <p>
+        Galaxies contain billions of stars. Discover different galaxy types and their features at
+        <a href="https://www.space.com/55-galaxies-facts-space-astronomy.html" target="_blank" rel="noopener">Space.com Galaxies</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Earth’s Atmosphere</h3>
+      <p>
+        The atmosphere protects life and regulates climate. Learn about its layers and composition at
+        <a href="https://climate.nasa.gov/news/2915/earths-atmosphere/" target="_blank" rel="noopener">NASA Climate</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Understanding Orbits</h3>
+      <p>
+        Orbits keep planets and satellites moving around larger bodies. Explore orbital mechanics at
+        <a href="https://www.nasa.gov/audience/forstudents/5-8/features/nasa-knows/what-is-an-orbit-58.html" target="_blank" rel="noopener">NASA Knows: Orbits</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Biomes of the World</h3>
+      <p>
+        Biomes are large ecological areas with distinct climates and species. Get an overview at
+        <a href="https://www.nationalgeographic.org/encyclopedia/biome/" target="_blank" rel="noopener">National Geographic Biomes</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Primary Succession</h3>
+      <p>
+        Primary succession is the natural growth of life in a new or barren environment. Learn about this ecological process at
+        <a href="https://www.nationalgeographic.org/encyclopedia/succession/" target="_blank" rel="noopener">National Geographic Succession</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Secondary Succession</h3>
+      <p>
+        Secondary succession occurs after an ecosystem is disturbed but soil remains. Explore examples and stages at
+        <a href="https://www.britannica.com/science/ecological-succession" target="_blank" rel="noopener">Britannica Ecological Succession</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Energy Transformations</h3>
+      <p>
+        Energy can change forms but is never lost. Learn about transformations like potential to kinetic energy at
+        <a href="https://www.khanacademy.org/science/physics/work-and-energy/work-and-energy-tutorial/a/energy-transformations" target="_blank" rel="noopener">Khan Academy Energy Transformations</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>States of Matter</h3>
+      <p>
+        Matter exists as solids, liquids, gases, and plasma. Understand their properties and changes at
+        <a href="https://www.chem4kids.com/files/matter_intro.html" target="_blank" rel="noopener">Chem4Kids Matter</a>.
+      </p>
+    </div>
+
+    <div class="reading">
+      <h3>Introduction to the Solar System</h3>
+      <p>
+        Our solar system includes the Sun, planets, moons, and other objects. Explore it at
+        <a href="https://solarsystem.nasa.gov/solar-system/our-solar-system/overview/" target="_blank" rel="noopener">NASA Solar System Exploration</a>.
+      </p>
+    </div>
+
+  </section>
+
+  <script>
+    // Back button functionality
+    document.getElementById('backButton').addEventListener('click', () => {
+      history.back();
+    });
+  </script>
+</body>
+</html>
